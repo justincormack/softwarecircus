@@ -1,0 +1,90 @@
+talk outline
+
+30m talk, plus qs/gap...
+
+
+From Exploding Engines to Industrial Engineering
+
+The two key enabling technologies of steam power were the governor and the safety valve. These took steam engines from being a dangerous toy to the key enabling technology for the industrial revolution. But they also led to thinking about systems, and how to make them robust, something that has not yet taken off in distributed systems design.
+
+The safety valve was invented by Denis Papin, a frenchman who invented the pressure cooker on a visit to London in the late seventeenth century. It is based in the simple idea that an explosion is not the most helpful way to respond to overload, and it is better to lose a bit of potential work.
+
+We don't usually look at the overload behaviour of our code. Let's take a look at some failure modes, test our software until it breaks, something the Victorians also invented after the Tay Bridge disaster. We can see that software does not fail nicely. Crash only software is fine for random failures with a load balancer, but failure under load will be made worse.
+
+The governor introduces feedback, probably the most important thing when thinking about systems. Indeed the governor was the ultimate inspiration for Charles Darwin's theory of evolution. Feedback is what takes a system from being a collection of parts to a whole that works together and is controllable. The governor is even older than the safety valve, having first been invented to build water clocks, and the form used for the steam engine was adapted by James Watt from the control system for windmills.
+
+While we rely on some key feedback systems, such as TCP, in the foundations of the internet, they are not yet tools for every distributed system. Resilience, self-organization and hierarchy are the key principles of systems that survive. Every microservice should be stand alone, able to survive catastrophic failure, and able to give feedback to other components. We can look at what this communication model looks like in an application.
+
+
+
+
+
+
+need to show programs explode. basically sweet spot, start failing.
+
+basically an elaborate queue, although we really want a rate program not ab.
+anything like a queue is denial of service.
+want to write a nice http rate generator, linear up to a point then will skew.
+httperf has a rate...
+
+really want a real graph but its unclear what...
+
+http://ferd.ca/queues-don-t-fix-overload.html good article on no queues, need back pressure.
+http://mechanical-sympathy.blogspot.co.uk/2012/05/apply-back-pressure-when-overloaded.html
+
+protocols
+http://www.reactive-streams.org/
+
+
+what is the best way to measure? basically when the outliers start to shift I guess is easy? Need to make a tool.
+little Go program to push traffic at faster rates.
+
+measure send vs receive time, with line between dots, as you make things more dense in 0, 1 seconds send time.
+
+remember testing!
+
+
+
+
+
+dont make it based on global state
+
+
+
+
+Summary. Safety valve keep from emergency. Governor keep in range. Graph of latency vs rate
+
+
+
+
+
+
+----
+capacity and queues - after limit beaks. implicit and explicit
+
+
+
+
+
+
+
+takeaway
+- measure linear zone
+- /measure break points
+- feedback engineering
+- tools
+- links
+
+
+
+high speed engines for electricity.
+
+"Automatic" engines[edit]
+
+Ames automatic governor, with centrifugal bob-weight and leaf spring
+A key requirement for the high-speed steam engine was accurate control of a constant speed, even under a rapidly changing load. Although the control of steam engines via a centrifugal governor dates back to Watt, this control was inadequate. These early governors operated a throttle valve to control the flow of steam to the engine. This gives an inadequately responsive control for the constant speed needed for electricity generation.
+
+The solution developed for high-speed steam engines was the "automatic" governor. Rather than controlling the flow rate of steam, it controlled the timing or 'cut-off' of the inlet valves.[6][7] This governor was interspersed between the crankshaft and the eccentric driving the valve gear. It was often made as part of the engine's flywheel. A centrifugal bob weight in the governor moved out against a spring with increasing speed. This caused the eccentric's position to shift relative to the crank, changing the valve timing and causing an early cut-off. As this control acted directly at the cylinder port, rather than through a long pipe from a throttle valve, it could be very fast-acting.
+
+
+
