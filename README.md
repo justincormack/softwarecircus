@@ -1,4 +1,4 @@
-My slides for Softwrae Circus 2015 "From Exlpoding Engines to Industrial Engineering"
+My slides for Software Circus 2015 "From Exploding Engines to Industrial Engineering"
 
 License CC-by-SA
 
